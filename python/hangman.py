@@ -74,8 +74,64 @@ def find_indexes():
 def right_guess(indexes):
     global placeholder
 
+    for i in indexes:
+        placeholder = placeholder[:i] + guess + placeholder[i + 1 :]
+
+
 def wrong_guess():
     global error_count
+
+    error_count += 1
+
+    match error_count:
+        case 1:
+            print(
+                "   _____ \n"
+                "  |      \n"
+                "  |      \n"
+                "  |      \n"
+                "  |      \n"
+                "  |      \n"
+                "  |      \n"
+                "__|__    \n"
+            )
+        case 2:
+            print(
+                "   _____ \n"
+                "  |     |\n"
+                "  |     |\n"
+                "  |      \n"
+                "  |      \n"
+                "  |      \n"
+                "  |      \n"
+                "__|__    \n"
+            )
+        case 3:
+            print(
+                "   _____ \n"
+                "  |     |\n"
+                "  |     |\n"
+                "  |     |\n"
+                "  |      \n"
+                "  |      \n"
+                "  |      \n"
+                "__|__    \n"
+            )
+        case 4:
+            print(
+                "   _____ \n"
+                "  |     |\n"
+                "  |     |\n"
+                "  |     |\n"
+                "  |     O\n"
+                "  |      \n"
+                "  |      \n"
+                "__|__    \n"
+            )
+        case _:
+            return
+
+    print("Wrong guess.", str(limit - error_count), "guess/es remaining\n")
 
 # loop to restart or exit the game after the first round ends
 def ask_for_replay():
