@@ -9,26 +9,29 @@ import random
 
 
 # game parameters
-def main():
+def init():
     global word
-    global display
+    global placeholder
     global already_guessed
-    global length
-    global continue_playing
-    global count
+    global error_count
+    global limit
+    global guesses_remaining
 
     word_list = words.words()
     word = random.choice(word_list).upper()
-    length = len(word)
-    display = "_" * length
+
+    placeholder = "_" * len(word)
     already_guessed = []
-    count = 0
+    error_count = 0
+    limit = 5
+    guesses_remaining = limit - error_count
+    play()
 
 
 # the actual gameplay
-def play_hangman():
-    global count
-    global display
+def play():
+    global error_count
+    global placeholder
     global word
     global already_guessed
     global continue_playing
@@ -45,10 +48,15 @@ def play_hangman():
     # reveal characters if present
     indexes = find_indexes()
     if indexes:
-        for i in indexes:
-            display = display[:i] + guess + display[i + 1 :]
+        right_guess(indexes)
     else:
-        extend_hangman()
+        wrong_guess()
+
+    if error_count == limit:
+        show_game_over()
+        ask_for_replay()
+    else:
+        play()
 
 
 def find_indexes():
@@ -63,22 +71,24 @@ def find_indexes():
     return indexes
 
 
-def extend_hangman():
-    global count
+def right_guess(indexes):
+    global placeholder
 
+def wrong_guess():
+    global error_count
 
 # loop to restart or exit the game after the first round ends
-def play_loop():
+def ask_for_replay():
     global continue_playing
 
     continue_playing = input("Do you want to play again? y/n\n")
 
-    while continue_playing == "y":
-        main()
+    if continue_playing == "y":
+        print("\nCOOLIO! New round...\n")
+        init()
     else:
         print("Bye! :*")
         exit()
 
 
-main()
-play_hangman()
+init()
