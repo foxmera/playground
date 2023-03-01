@@ -135,6 +135,21 @@ def wrong_guess():
     print("Wrong guess.", str(limit - error_count), "guess/es remaining\n")
 
 
+def show_game_over():
+    print(
+        "   _____   \n"
+        "  |     |  \n"
+        "  |     |  \n"
+        "  |     |  \n"
+        "  |     O  \n"
+        "  |    /|\ \n"
+        "  |    / \ \n"
+        "__|__      \n"
+    )
+    print("Wrong guess. You are hanged!!!\n")
+    print("The word was:", word)
+
+
 def show_success():
     print("Yes, it's", word, "!")
     print("CONGRATS! YOU BEAT THE GAME :D")
