@@ -34,10 +34,11 @@ def play():
     global placeholder
     global word
     global already_guessed
-    global continue_playing
     global guess
 
-    guess = input("This is your word: " + display + " Enter your guess:\n")
+    if "_" not in placeholder:
+        return show_success()
+
     guess = guess.strip().upper()
 
     # TODO: handle invalid input
@@ -132,6 +133,13 @@ def wrong_guess():
             return
 
     print("Wrong guess.", str(limit - error_count), "guess/es remaining\n")
+
+
+def show_success():
+    print("Yes, it's", word, "!")
+    print("CONGRATS! YOU BEAT THE GAME :D")
+    ask_for_replay()
+
 
 # loop to restart or exit the game after the first round ends
 def ask_for_replay():
