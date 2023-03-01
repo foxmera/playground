@@ -39,15 +39,24 @@ def play():
     if "_" not in placeholder:
         return show_success()
 
+    guess = input("This is your word: " + placeholder + "\nEnter your guess:\n")
     guess = guess.strip().upper()
 
-    # TODO: handle invalid input
-    # TODO: handle already guessed input
+    if len(guess) != 1:
+        print("<", guess, "> is not a valid input. Please try something else.\n")
+        play()
+        return
+
+    if guess in already_guessed:
+        print("Letter", guess, "was already picked. Please try something else.\n")
+        play()
+        return
 
     already_guessed.extend([guess])
 
     # reveal characters if present
     indexes = find_indexes()
+
     if indexes:
         right_guess(indexes)
     else:
