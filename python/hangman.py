@@ -9,7 +9,7 @@ import random
 import time
 
 
-# game parameters
+# Setup method for the initial game play.
 def init():
     global word
     global placeholder
@@ -74,9 +74,8 @@ def init():
     play()
 
 
-# the actual gameplay
+# This runs the actual game and is looped through until a win or game over.
 def play():
-    global already_guessed
     global guess
 
     if "_" not in placeholder:
@@ -97,7 +96,10 @@ def play():
 
     already_guessed.extend([guess])
 
-    # reveal characters if present
+    # Looking for positions of the guessed letter in the solution word.
+    # On a right guess all occurences of "_" in the placeholder are replaced
+    # by the given letter. Should the guessed letter not be part of the word
+    # another part of the hanged man is added.
     indexes = find_indexes()
 
     if indexes:
@@ -108,9 +110,11 @@ def play():
     play()
 
 
+# Returns an array of integers that contain the position of all
+# occurences of "_" in the placeholder that shall later be replaced
+# by the guessed letter.
 def find_indexes():
     characters = list(word)
-    length = len(characters)
     indexes = []
 
     for i, char in enumerate(characters):
@@ -120,6 +124,8 @@ def find_indexes():
     return indexes
 
 
+# A guess is considered right if the solution word contains at least one
+# occurence of the guessed letter.
 def right_guess(indexes):
     global placeholder
 
@@ -127,6 +133,9 @@ def right_guess(indexes):
         placeholder = placeholder[:i] + guess + placeholder[i + 1 :]
 
 
+# A guess is considered wrong if the solution word doesn't contain the
+# guessed letter. In case the maximum amount of guesses is reached,
+# the game stops and shows the game over message.
 def wrong_guess():
     global error_count
 
@@ -153,7 +162,7 @@ def show_success():
     ask_for_replay()
 
 
-# loop to restart or exit the game after the first round ends
+# Option for the player to restart or exit the game after a win or loose.
 def ask_for_replay():
     time.sleep(2)
 
