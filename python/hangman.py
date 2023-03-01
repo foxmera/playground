@@ -107,11 +107,7 @@ def play():
     else:
         wrong_guess()
 
-    if error_count == limit:
-        show_game_over()
-        ask_for_replay()
-    else:
-        play()
+    play()
 
 
 def find_indexes():
@@ -138,6 +134,9 @@ def wrong_guess():
 
     error_count += 1
 
+    if error_count == limit:
+        show_game_over()
+        ask_for_replay()
         return
 
     print(graphic[error_count])
