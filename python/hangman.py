@@ -16,6 +16,7 @@ def init():
     global error_count
     global limit
     global guesses_remaining
+    global graphic
 
     word_list = words.words()
     word = random.choice(word_list).upper()
@@ -25,6 +26,50 @@ def init():
     error_count = 0
     limit = 5
     guesses_remaining = limit - error_count
+    graphic = [
+        "",
+        "   _____ \n"
+        + "  |      \n"
+        + "  |      \n"
+        + "  |      \n"
+        + "  |      \n"
+        + "  |      \n"
+        + "  |      \n"
+        + "__|__    \n",
+        "   _____ \n"
+        + "  |     |\n"
+        + "  |     |\n"
+        + "  |      \n"
+        + "  |      \n"
+        + "  |      \n"
+        + "  |      \n"
+        + "__|__    \n",
+        "   _____ \n"
+        + "  |     |\n"
+        + "  |     |\n"
+        + "  |     |\n"
+        + "  |      \n"
+        + "  |      \n"
+        + "  |      \n"
+        + "__|__    \n",
+        "   _____ \n"
+        + "  |     |\n"
+        + "  |     |\n"
+        + "  |     |\n"
+        + "  |     O\n"
+        + "  |      \n"
+        + "  |      \n"
+        + "__|__    \n",
+        "   _____   \n"
+        + "  |     |  \n"
+        + "  |     |  \n"
+        + "  |     |  \n"
+        + "  |     O  \n"
+        + "  |    /|\ \n"
+        + "  |    / \ \n"
+        + "__|__      \n",
+    ]
+
     play()
 
 
@@ -93,68 +138,14 @@ def wrong_guess():
 
     error_count += 1
 
-    match error_count:
-        case 1:
-            print(
-                "   _____ \n"
-                "  |      \n"
-                "  |      \n"
-                "  |      \n"
-                "  |      \n"
-                "  |      \n"
-                "  |      \n"
-                "__|__    \n"
-            )
-        case 2:
-            print(
-                "   _____ \n"
-                "  |     |\n"
-                "  |     |\n"
-                "  |      \n"
-                "  |      \n"
-                "  |      \n"
-                "  |      \n"
-                "__|__    \n"
-            )
-        case 3:
-            print(
-                "   _____ \n"
-                "  |     |\n"
-                "  |     |\n"
-                "  |     |\n"
-                "  |      \n"
-                "  |      \n"
-                "  |      \n"
-                "__|__    \n"
-            )
-        case 4:
-            print(
-                "   _____ \n"
-                "  |     |\n"
-                "  |     |\n"
-                "  |     |\n"
-                "  |     O\n"
-                "  |      \n"
-                "  |      \n"
-                "__|__    \n"
-            )
-        case _:
-            return
+        return
 
+    print(graphic[error_count])
     print("Wrong guess.", str(limit - error_count), "guess/es remaining\n")
 
 
 def show_game_over():
-    print(
-        "   _____   \n"
-        "  |     |  \n"
-        "  |     |  \n"
-        "  |     |  \n"
-        "  |     O  \n"
-        "  |    /|\ \n"
-        "  |    / \ \n"
-        "__|__      \n"
-    )
+    print(graphic[5])
     print("Wrong guess. You are hanged!!!\n")
     print("The word was:", word)
 
