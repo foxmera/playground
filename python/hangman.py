@@ -6,6 +6,7 @@
 
 from nltk.corpus import words
 import random
+import time
 
 
 # game parameters
@@ -157,7 +158,7 @@ def show_success():
 
 # loop to restart or exit the game after the first round ends
 def ask_for_replay():
-    global continue_playing
+    time.sleep(2)
 
     continue_playing = input("Do you want to play again? y/n\n")
 
