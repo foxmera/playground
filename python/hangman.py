@@ -1,5 +1,5 @@
 # By foxmera (MT Fischer), February 2023
-# 
+#
 # HANGMAN TERMINAL GAME IN PYTHON
 #
 
@@ -76,9 +76,6 @@ def init():
 
 # the actual gameplay
 def play():
-    global error_count
-    global placeholder
-    global word
     global already_guessed
     global guess
 
@@ -115,11 +112,11 @@ def find_indexes():
     characters = list(word)
     length = len(characters)
     indexes = []
-    i = 0
-    while i < length:
-        if guess == characters[i]:
+
+    for i, char in enumerate(characters):
+        if char == guess:
             indexes.append(i)
-        i += 1
+
     return indexes
 
 
