@@ -15,7 +15,7 @@ def init():
     global placeholder
     global already_guessed
     global error_count
-    global limit
+    global max_guess_count
     global guesses_remaining
     global graphic
 
@@ -25,8 +25,8 @@ def init():
     placeholder = "_" * len(word)
     already_guessed = []
     error_count = 0
-    limit = 5
-    guesses_remaining = limit - error_count
+    max_guess_count = 5
+    guesses_remaining = max_guess_count - error_count
     graphic = [
         "",
         "   _____ \n"
@@ -132,13 +132,13 @@ def wrong_guess():
 
     error_count += 1
 
-    if error_count == limit:
+    if error_count == max_guess_count:
         show_game_over()
         ask_for_replay()
         return
 
     print(graphic[error_count])
-    print("Wrong guess.", str(limit - error_count), "guess/es remaining\n")
+    print("Wrong guess.", str(max_guess_count - error_count), "guess/es remaining\n")
 
 
 def show_game_over():
