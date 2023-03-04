@@ -82,6 +82,11 @@ def play():
         return show_success()
 
     guess = input("This is your word: " + placeholder + "\nEnter your guess:\n")
+
+    if guess == "?":
+        print("\nAlready guessed:", already_guessed)
+        return play()
+
     guess = guess.strip().upper()
 
     if len(guess) != 1:
