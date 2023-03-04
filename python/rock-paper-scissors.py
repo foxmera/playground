@@ -5,13 +5,28 @@
 
 from random import randint
 
-options = ["r", "p", "s"]
-wins = ["rs", "pr", "sp"]
-win_message = {
-    "r": "Rock crushes Scissors.",
-    "p": "Paper covers Rock.",
-    "s": "Scissors cut Paper.",
-}
+
+def init():
+    global options
+    global wins
+    global win_message
+    global name
+
+    options = ("r", "p", "s")
+    wins = ("rs", "pr", "sp")
+    win_message = {
+        "r": "Rock crushes Scissors.",
+        "p": "Paper covers Rock.",
+        "s": "Scissors cut Paper.",
+    }
+    name = {
+        "r": "Rock",
+        "p": "Paper",
+        "s": "Scissors",
+    }
+
+
+    play()
 
 
 def play():
@@ -22,16 +37,14 @@ def play():
 
     if player not in options:
         print("That's not a valid play. Check your spelling!")
-        play()
-        return
+        return play()
 
     print("Player:   " + player)
     print("Computer: " + computer)
 
     if player == computer:
         print("Tie!")
-        play()
-        return
+        return play()
 
     game = player + computer
 
@@ -43,4 +56,4 @@ def play():
     play()
 
 
-play()
+init()
