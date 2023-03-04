@@ -25,6 +25,11 @@ def init():
         "s": "Scissors",
     }
 
+    print(
+        "WELCOME TO THIS GAME!\n"
+        + "Choose one of three symbols: a rock, paper, or scissors.\n"
+        + "A rock beats scissors by crushing them, scissors beat paper by cutting it, and paper beats rock by covering it.\n"
+    )
 
     play()
 
@@ -39,8 +44,8 @@ def play():
         print("That's not a valid play. Check your spelling!")
         return play()
 
-    print("Player:   " + player)
-    print("Computer: " + computer)
+    print("Player:   " + name[player])
+    print("Computer: " + name[computer])
 
     if player == computer:
         print("Tie!")
