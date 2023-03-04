@@ -22,7 +22,7 @@ def init():
     word_list = words.words()
     word = random.choice(word_list).upper()
 
-    placeholder = "_" * len(word)
+    placeholder = "." * len(word)
     already_guessed = []
     error_count = 0
     max_guess_count = 5
@@ -78,7 +78,7 @@ def init():
 def play():
     global guess
 
-    if "_" not in placeholder:
+    if "." not in placeholder:
         return show_success()
 
     guess = input("This is your word: " + placeholder + "\nEnter your guess:\n")
@@ -102,7 +102,7 @@ def play():
     already_guessed.extend([guess])
 
     # Looking for positions of the guessed letter in the solution word.
-    # On a right guess all occurences of "_" in the placeholder are replaced
+    # On a right guess all occurences of "." in the placeholder are replaced
     # by the given letter. Should the guessed letter not be part of the word
     # another part of the hanged man is added.
     indexes = find_indexes()
@@ -116,7 +116,7 @@ def play():
 
 
 # Returns an array of integers that contain the position of all
-# occurences of "_" in the placeholder that shall later be replaced
+# occurences of "." in the placeholder that shall later be replaced
 # by the guessed letter.
 def find_indexes():
     characters = list(word)
