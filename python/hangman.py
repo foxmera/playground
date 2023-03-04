@@ -27,7 +27,7 @@ def init():
     error_count = 0
     max_guess_count = 5
     guesses_remaining = max_guess_count - error_count
-    graphic = [
+    graphic = (
         "",
         "   _____ \n"
         + "  |      \n"
@@ -69,6 +69,7 @@ def init():
         + "  |    /|\ \n"
         + "  |    / \ \n"
         + "__|__      \n",
+    )
 
     print(
         "WELCOME TO HANGMAN!\n"
