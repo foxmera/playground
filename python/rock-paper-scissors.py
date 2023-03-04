@@ -29,6 +29,7 @@ def init():
         "WELCOME TO THIS GAME!\n"
         + "Choose one of three symbols: a rock, paper, or scissors.\n"
         + "A rock beats scissors by crushing them, scissors beat paper by cutting it, and paper beats rock by covering it.\n"
+        + "Type 'x' to exit the game.\n"
     )
 
     play()
@@ -39,6 +40,10 @@ def play():
     computer = options[randint(0, 2)]
 
     player = input("Rock, Paper, Scissors? r/p/s ")
+
+    if player == "x":
+        print("Bye! :*")
+        exit()
 
     if player not in options:
         print("That's not a valid play. Check your spelling!")
