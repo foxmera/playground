@@ -69,7 +69,13 @@ def init():
         + "  |    /|\ \n"
         + "  |    / \ \n"
         + "__|__      \n",
-    ]
+
+    print(
+        "WELCOME TO HANGMAN!\n"
+        + "The computer will choose a word and you try to find it out by guessing single letters.\n"
+        + "Each incorrect guess brings you closer to being 'hanged' aka losing the game.\n"
+        + "Typing in '?' lists all letters that were already guessed.\n"
+    )
 
     play()
 
@@ -90,14 +96,12 @@ def play():
     guess = guess.strip().upper()
 
     if len(guess) != 1:
-        print("<", guess, "> is not a valid input. Please try something else.\n")
-        play()
-        return
+        print("\n<", guess, "> is no valid input. Please try something else.\n")
+        return play()
 
     if guess in already_guessed:
-        print("Letter", guess, "was already picked. Please try something else.\n")
-        play()
-        return
+        print("\nLetter", guess, "was already picked. Please try something else.\n")
+        return play()
 
     already_guessed.extend([guess])
 
@@ -152,17 +156,17 @@ def wrong_guess():
         return
 
     print(graphic[error_count])
-    print("Wrong guess.", str(max_guess_count - error_count), "guess/es remaining\n")
+    print("\nWrong guess.", str(max_guess_count - error_count), "guess/es remaining.")
 
 
 def show_game_over():
     print(graphic[5])
-    print("Wrong guess. You are hanged!!!\n")
+    print("\nWrong guess. You are hanged!!!")
     print("The word was:", word)
 
 
 def show_success():
-    print("Yes, it's", word, "!")
+    print("\nCorrect, it's", word, "!")
     print("CONGRATS! YOU BEAT THE GAME :D")
     ask_for_replay()
 
@@ -177,7 +181,7 @@ def ask_for_replay():
         print("\nCOOLIO! New round...\n")
         init()
     else:
-        print("Bye! :*")
+        print("\nBye! :*")
         exit()
 
 
