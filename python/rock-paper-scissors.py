@@ -1,4 +1,4 @@
-# By foxmera (MT Fischer), February 2023
+# By foxmerald, February 2023
 #
 # ROCK PAPER SCISSORS TERMINAL GAME
 #

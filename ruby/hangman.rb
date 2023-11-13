@@ -1,4 +1,4 @@
-# By foxmera (MT Fischer), January 2018
+# By foxmerald, January 2018
 #
 # HANGMAN TERMINAL GAME IN RUBY 
 #
