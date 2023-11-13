@@ -1,4 +1,4 @@
-# By foxmera (MT Fischer), June 2015
+# By foxmerald, June 2015
 
 # interactive gurps character sheet 
 

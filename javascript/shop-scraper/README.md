@@ -1,4 +1,4 @@
-# By foxmera (MT Fischer), September 2016
+# By foxmerald, September 2016
 
 # shop-scraper
 Scrape product data from grocery store online shops
